@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Notice</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #808080; /* Neutral gray background */
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        .notice-container {
+            max-width: 80%;
+            padding: 20px;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow-x: auto; /* Makes table scrollable on small screens */
+            text-align: center; /* Centers content */
+        }
+        .frame {
+            border: 15px solid #c00; /* Festive red frame border */
+            padding: 15px;
+            background-color: #fff; /* White background inside frame */
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Shadow for 3D picture frame effect */
+            border-image: linear-gradient(to bottom, #c00, #0c0) 1; /* Gradient for Christmas red-to-green */
+            margin-bottom: 20px;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1 {
+            font-size: 32px;
+            margin: 0;
+            color: #c00; /* Festive red */
+            text-shadow: 1px 1px 2px #0c0; /* Green shadow for Christmas vibe */
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun, festive font (fallback to sans-serif) */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2; /* Light gray for header */
+            font-weight: bold;
+            text-align: center; /* Center justification for the header cell */
+        }
+        tr:nth-child(even) td {
+            background-color: #e6f7ff; /* Light blue for even rows */
+        }
+        tr:nth-child(odd) td {
+            background-color: #fff3e6; /* Light orange for odd rows */
+        }
+        /* Different colors for specific cells if needed */
+        td.recipient {
+            background-color: #ffffe6; /* Light yellow for recipient */
+        }
+        td.destination {
+            background-color: #e6e6ff; /* Light purple for destination */
+        }
+        td.status {
+            background-color: #ffe6e6; /* Light red for status */
+        }
+        td.location {
+            background-color: #e6f7ff; /* Light blue for current location */
+        }
+        td.date {
+            background-color: #e6ffe6; /* Light green for date */
+        }
+        td.view-gift {
+            background-color: #f0f0f0; /* Light gray for view gift */
+        }
+        .update-note {
+            margin-top: 20px;
+            font-style: italic;
+            font-size: 14px;
+            color: #666;
+        }
+        .progress-section {
+            margin-top: 20px;
+            text-align: left;
+        }
+        progress {
+            width: 100%;
+            height: 20px;
+            background-color: #f3f3f3;
+            border: 1px solid #ccc;
+        }
+        progress::-webkit-progress-bar {
+            background-color: #f3f3f3;
+        }
+        progress::-webkit-progress-value {
+            background-color: #0c0; /* Green for progress */
+        }
+        progress::-moz-progress-bar {
+            background-color: #0c0; /* Green for progress */
+        }
+    </style>
+</head>
+<body>
+    <div class="notice-container">
+        <div class="frame">
+            <h1>🎄 Christmas Gift Tracker 🎄</h1>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">We're Sorry!<br>Your Christmas gift has been delayed 😞</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Recipient</td>
+                    <td class="recipient">Jesse Chow</td>
+                </tr>
+                <tr>
+                    <td>Destination</td>
+                    <td class="destination">Brea, CA</td>
+                </tr>
+                <tr>
+                    <td>Delivery Status</td>
+                    <td class="status">Back Ordered</td>
+                </tr>
+                <tr>
+                    <td>Current Location</td>
+                    <td class="location">Scranton, PA</td>
+                </tr>
+                <tr>
+                    <td>Approximate Delivery Date</td>
+                    <td class="date">December 31, 2025</td>
+                </tr>
+                <tr>
+                    <td>View Gift</td>
+                    <td class="view-gift"><a href="https://www.amazon.com/gp/product/B0G4RST8LV/ref=ox_sc_act_title_1?smid=AY1YC2BWA3QO7&th=1" target="_blank">View on Amazon</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="progress-section">
+            <label for="progress">Shipment Progress:</label>
+            <progress id="progress" value="20" max="100"></progress>
+            <span>20% (Back Ordered in Scranton, PA)</span>
+        </div>
+        <p class="update-note">Check back here daily for updates</p>
+    </div>
+</body>
+</html>
