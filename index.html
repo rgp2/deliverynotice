@@ -41,4 +41,44 @@
         tr:nth-child(even) td {
             background-color: #e6f7ff; /* Light blue for even rows */
         }
-        tr:nth-child(odd
+        tr:nth-child(odd) td {
+            background-color: #fff3e6; /* Light orange for odd rows */
+        }
+        /* Different colors for specific cells if needed */
+        td.status {
+            background-color: #ffe6e6; /* Light red for status */
+        }
+        td.date {
+            background-color: #e6ffe6; /* Light green for date */
+        }
+        td.destination {
+            background-color: #e6e6ff; /* Light purple for destination */
+        }
+    </style>
+</head>
+<body>
+    <div class="notice-container">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">Delivery Notice</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Delivery Status</td>
+                    <td class="status">Delayed</td>
+                </tr>
+                <tr>
+                    <td>Approximate Delivery Date</td>
+                    <td class="date">December 31, 2025</td>
+                </tr>
+                <tr>
+                    <td>Destination</td>
+                    <td class="destination">Brea, CA</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
