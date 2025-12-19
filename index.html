@@ -45,6 +45,9 @@
             background-color: #fff3e6; /* Light orange for odd rows */
         }
         /* Different colors for specific cells if needed */
+        td.recipient {
+            background-color: #ffffe6; /* Light yellow for recipient */
+        }
         td.status {
             background-color: #ffe6e6; /* Light red for status */
         }
@@ -61,10 +64,14 @@
         <table>
             <thead>
                 <tr>
-                    <th colspan="2">Delivery Notice</th>
+                    <th colspan="2">We're sorry, your shipment has been delayed</th>
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td>Recipient</td>
+                    <td class="recipient">June Hung</td>
+                </tr>
                 <tr>
                     <td>Delivery Status</td>
                     <td class="status">Delayed</td>
