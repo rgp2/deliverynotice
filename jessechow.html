@@ -47,7 +47,7 @@
         .message {
             font-size: 18px;
             margin: 20px 0;
-            text-align: left;
+            text-align: center; /* Center align all text */
         }
         .signature {
             font-style: italic;
@@ -60,6 +60,10 @@
         a:hover {
             text-decoration: underline;
         }
+        .recipient-name {
+            font-size: 24px; /* Larger font for Jesse */
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -68,7 +72,7 @@
             <h1>🎄 Christmas Gift Tracker 🎄</h1>
         </div>
         <div class="message">
-            <p>To: Jesse,</p>
+            <p>To: <span class="recipient-name">Jesse</span>,</p>
             <p>This is what I got you for Christmas, but your mom made me return it!</p>
             <p><a href="https://www.amazon.com/gp/product/B0G4RST8LV/ref=ox_sc_act_title_1?smid=AY1YC2BWA3QO7&th=1" target="_blank">View the Gift on Amazon</a></p>
             <p class="signature">Merry Christmas!<br>Bob</p>
