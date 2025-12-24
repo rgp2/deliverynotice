@@ -19,9 +19,9 @@ body, html {
 
 .notice-container {
     width: 100%;
-    max-width: 600px;
+    max-width: 620px;
     padding: 20px;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     text-align: center;
@@ -46,25 +46,40 @@ body, html {
     display: block;
 }
 
+/* Overlay SVG */
 .cup-overlay {
     position: absolute;
     inset: 0;
     pointer-events: none;
 }
 
-/* Main painted text */
+/* Main engraved text */
 .cup-text {
-    fill: #ffffff;
+    fill: #f2f0e8; /* warm off-white */
     font-family: "Times New Roman", serif;
     font-size: 18px;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+    text-shadow: inset 0 0 1px rgba(0,0,0,0.25);
 }
 
-/* Est. text override */
+/* Top line slightly tighter */
+.cup-text.top {
+    letter-spacing: 0.2px;
+}
+
+/* Small caps look for Est. */
 .est-text {
     font-size: 14px;
     letter-spacing: 2px;
     fill: #000000;
+    font-variant: small-caps;
+}
+
+/* Hidden interior engraving */
+.inner-text {
+    font-size: 14px;
+    fill: rgba(0,0,0,0.35);
+    letter-spacing: 1px;
 }
 
 /* Table styling */
@@ -104,6 +119,7 @@ progress {
 progress::-webkit-progress-value {
     background-color: #b8860b;
 }
+
 progress::-moz-progress-bar {
     background-color: #b8860b;
 }
@@ -115,7 +131,6 @@ progress::-moz-progress-bar {
     font-size: 14px;
 }
 
-/* Mobile */
 @media (max-width: 480px) {
     .tracking-label {
         font-size: 20px;
@@ -126,22 +141,24 @@ progress::-moz-progress-bar {
 
 <body>
 <div class="notice-container">
+
     <p class="tracking-label">10th Anniversary Gift Tracking</p>
 
     <div class="cup-wrapper">
-        <img
-            src="https://cdn.create.vista.com/api/media/small/464667384/stock-photo-old-tin-cup-white-background"
-            alt="Old Tin Cup">
+        <img src="https://cdn.create.vista.com/api/media/small/464667384/stock-photo-old-tin-cup-white-background"
+             alt="Old Tin Cup">
 
         <svg class="cup-overlay" viewBox="0 0 420 420" preserveAspectRatio="none">
+
+            <!-- Main engraving -->
             <defs>
-                <!-- Raised slightly, shifted right, strong outward curvature -->
-                <path id="line1" d="M 113 147 Q 228 207 343 147" />
-                <path id="line2" d="M 118 177 Q 228 247 338 177" />
-                <path id="line3" d="M 138 207 Q 228 282 318 207" />
+                <path id="line1" d="M 120 135 Q 210 195 300 135" />
+                <path id="line2" d="M 125 170 Q 210 235 295 170" />
+                <path id="line3" d="M 140 205 Q 210 270 280 205" />
+                <path id="inner" d="M 155 245 Q 210 285 265 245" />
             </defs>
 
-            <text class="cup-text">
+            <text class="cup-text top">
                 <textPath href="#line1" startOffset="50%" text-anchor="middle">
                     You’re Always
                 </textPath>
@@ -158,6 +175,14 @@ progress::-moz-progress-bar {
                     Est. 2016
                 </textPath>
             </text>
+
+            <!-- Hidden interior engraving -->
+            <text class="inner-text">
+                <textPath href="#inner" startOffset="50%" text-anchor="middle">
+                    Moraine Lake
+                </textPath>
+            </text>
+
         </svg>
     </div>
 
