@@ -1,201 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delivery Notice</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #808080;
-            font-family: Arial, sans-serif;
-            color: #333;
-        }
-        .notice-container {
-            max-width: 80%;
-            padding: 20px;
-            background-color: #fff;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        .tracking-label {
-            font-size: 24px;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        .frame {
-            border: 20px groove #654321;
-            padding: 20px;
-            background-color: #f5f5dc;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-            margin-bottom: 20px;
-            max-width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 12px;
-            border: 1px solid #ddd;
-        }
-        th {
-            background-color: #f5f5dc;
-            text-align: center;
-        }
-        tbody tr:nth-child(odd) td {
-            background-color: #fdf5e6;
-        }
-        tbody tr:nth-child(even) td {
-            background-color: #d2b48c;
-        }
-        .progress-section {
-            margin-top: 20px;
-            text-align: left;
-        }
-        progress {
-            width: 100%;
-            height: 20px;
-        }
-        progress::-webkit-progress-value {
-            background-color: #b8860b;
-        }
-        progress::-moz-progress-bar {
-            background-color: #b8860b;
-        }
-        .update-note {
-            margin-top: 20px;
-            font-style: italic;
-            font-size: 14px;
-            color: #666;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delivery Notice</title>
+
+<style>
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #808080;
+    font-family: Arial, sans-serif;
+}
+
+.notice-container {
+    max-width: 80%;
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.tracking-label {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.frame {
+    border: 20px groove #654321;
+    padding: 20px;
+    background-color: #f5f5dc;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f5f5dc;
+    text-align: center;
+}
+
+tbody tr:nth-child(odd) td {
+    background-color: #fdf5e6;
+}
+
+tbody tr:nth-child(even) td {
+    background-color: #d2b48c;
+}
+
+.progress-section {
+    margin-top: 20px;
+    text-align: left;
+}
+
+progress {
+    width: 100%;
+    height: 20px;
+}
+
+progress::-webkit-progress-value {
+    background-color: #b8860b;
+}
+
+progress::-moz-progress-bar {
+    background-color: #b8860b;
+}
+
+.update-note {
+    margin-top: 20px;
+    font-style: italic;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Hover reveal */
+.frame:hover .engraved {
+    fill: #4f4f4f;
+    filter: url(#engraveDeep);
+}
+.frame:hover .shine {
+    animation-play-state: paused;
+}
+</style>
 </head>
+
 <body>
 <div class="notice-container">
-    <p class="tracking-label">Tracking</p>
+<p class="tracking-label">Tracking</p>
 
-    <div class="frame">
-        <!-- Old-fashioned tin cup with engraved text and subtle shine -->
-        <svg viewBox="0 0 400 300" width="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <!-- Aged tin gradient -->
-                <linearGradient id="tinBody" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#e0e0e0"/>
-                    <stop offset="40%" stop-color="#bfbfbf"/>
-                    <stop offset="70%" stop-color="#a9a9a9"/>
-                    <stop offset="100%" stop-color="#cfcfcf"/>
-                </linearGradient>
+<div class="frame">
+<svg viewBox="0 0 400 320" width="100%" xmlns="http://www.w3.org/2000/svg">
 
-                <!-- Engraving shadow -->
-                <filter id="engrave">
-                    <feOffset dx="0" dy="1"/>
-                    <feGaussianBlur stdDeviation="1"/>
-                    <feComposite in2="SourceAlpha" operator="out"/>
-                    <feColorMatrix type="matrix"
-                        values="0 0 0 0 0.25
-                                0 0 0 0 0.25
-                                0 0 0 0 0.25
-                                0 0 0 1 0"/>
-                </filter>
+<defs>
+    <!-- Cylindrical tin shading -->
+    <linearGradient id="tin3D" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#9f9f9f"/>
+        <stop offset="20%" stop-color="#cfcfcf"/>
+        <stop offset="50%" stop-color="#eeeeee"/>
+        <stop offset="80%" stop-color="#b5b5b5"/>
+        <stop offset="100%" stop-color="#8a8a8a"/>
+    </linearGradient>
 
-                <!-- Subtle shine -->
-                <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
-                    <stop offset="50%" stop-color="rgba(255,255,255,0.35)"/>
-                    <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-                </linearGradient>
-            </defs>
+    <!-- Engraving depth -->
+    <filter id="engraveDeep">
+        <feOffset dx="0" dy="1"/>
+        <feGaussianBlur stdDeviation="1"/>
+        <feComposite in2="SourceAlpha" operator="out"/>
+    </filter>
 
-            <!-- Cup body -->
-            <rect x="110" y="80" width="180" height="150" rx="18"
-                  fill="url(#tinBody)"
-                  stroke="#777"
-                  stroke-width="4"/>
+    <!-- Soft shine -->
+    <linearGradient id="shineGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+        <stop offset="50%" stop-color="rgba(255,255,255,0.35)"/>
+        <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+</defs>
 
-            <!-- Cup lip -->
-            <ellipse cx="200" cy="80" rx="90" ry="12"
-                     fill="#d9d9d9"
-                     stroke="#777"
-                     stroke-width="3"/>
+<!-- Inner rim -->
+<ellipse cx="200" cy="90" rx="92" ry="14"
+         fill="#bdbdbd"
+         stroke="#777"
+         stroke-width="2"/>
 
-            <!-- Handle -->
-            <path d="M290 115
-                     C335 120, 335 190, 290 195
-                     C300 175, 300 135, 290 115 Z"
-                  fill="#c0c0c0"
-                  stroke="#777"
-                  stroke-width="4"/>
+<!-- Cup body -->
+<rect x="108" y="90" width="184" height="160" rx="22"
+      fill="url(#tin3D)"
+      stroke="#6f6f6f"
+      stroke-width="4"/>
 
-            <!-- Engraved text -->
-            <text x="200" y="160"
-                  text-anchor="middle"
-                  font-family="Times New Roman, serif"
-                  font-size="22"
-                  letter-spacing="1"
-                  fill="#6b6b6b"
-                  filter="url(#engrave)">
-                Tenth Anniversary Gift
-            </text>
+<!-- Handle -->
+<path d="M292 120
+         C340 130, 340 210, 292 220
+         C305 195, 305 145, 292 120 Z"
+      fill="#b8b8b8"
+      stroke="#6f6f6f"
+      stroke-width="4"/>
 
-            <!-- Shine animation -->
-            <rect x="-120" y="80" width="120" height="150"
-                  fill="url(#shine)" opacity="0.4">
-                <animate attributeName="x"
-                         from="-120"
-                         to="400"
-                         dur="8s"
-                         repeatCount="indefinite"/>
-            </rect>
-        </svg>
-    </div>
+<!-- Engraved text (wrapped vertically) -->
+<text x="200" y="145"
+      text-anchor="middle"
+      font-family="Times New Roman, serif"
+      font-size="22"
+      letter-spacing="1"
+      class="engraved"
+      fill="#7a7a7a"
+      filter="url(#engraveDeep)">
+    <tspan x="200" dy="0">Tenth</tspan>
+    <tspan x="200" dy="26">Anniversary</tspan>
+    <tspan x="200" dy="26">Gift</tspan>
+</text>
 
-    <table>
-        <thead>
-        <tr>
-            <th colspan="2">Your Tenth Anniversary Gift is on its way!</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>Recipient</td>
-            <td>June Hung</td>
-        </tr>
-        <tr>
-            <td>Destination</td>
-            <td>Brea, CA</td>
-        </tr>
-        <tr>
-            <td>Delivery Status</td>
-            <td>Delayed in Customs</td>
-        </tr>
-        <tr>
-            <td>Current Location</td>
-            <td>中國廈門</td>
-        </tr>
-        <tr>
-            <td>Approximate Delivery Date</td>
-            <td>December 31, 2025</td>
-        </tr>
-        </tbody>
-    </table>
+<!-- Shine sweep -->
+<rect class="shine"
+      x="-140" y="90" width="140" height="160"
+      fill="url(#shineGrad)" opacity="0.35">
+    <animate attributeName="x"
+             from="-140"
+             to="420"
+             dur="14s"
+             repeatCount="indefinite"/>
+</rect>
 
-    <div class="progress-section">
-        <label for="progress">Shipment Progress:</label>
-        <progress id="progress" value="20" max="100"></progress>
-        <span>20% (In Transit from China)</span>
-    </div>
+</svg>
+</div>
 
-    <p class="update-note">Check back here daily for updates</p>
+<table>
+<thead>
+<tr>
+<th colspan="2">Your Tenth Anniversary Gift is on its way!</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recipient</td>
+<td>June Hung</td>
+</tr>
+<tr>
+<td>Destination</td>
+<td>Brea, CA</td>
+</tr>
+<tr>
+<td>Delivery Status</td>
+<td>Delayed in Customs</td>
+</tr>
+<tr>
+<td>Current Location</td>
+<td>中國廈門</td>
+</tr>
+<tr>
+<td>Approximate Delivery Date</td>
+<td>January 9, 2026</td>
+</tr>
+</tbody>
+</table>
+
+<div class="progress-section">
+<label for="progress">Shipment Progress:</label>
+<progress id="progress" value="20" max="100"></progress>
+<span>20% (In Transit from China)</span>
+</div>
+
+<p class="update-note">Check back here daily for updates</p>
 </div>
 </body>
 </html>
