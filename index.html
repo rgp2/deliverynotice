@@ -44,10 +44,6 @@ body, html {
     margin-right: auto;
 }
 
-.frame:hover .engraved {
-    fill: #3f3f3f;
-    filter: url(#engraveDeep);
-}
 .frame:hover .shine {
     animation-play-state: paused;
 }
@@ -107,91 +103,103 @@ progress::-moz-progress-bar {
 <p class="tracking-label">Tracking</p>
 
 <div class="frame">
-<svg viewBox="0 0 460 360" width="100%" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 420 340" width="100%" xmlns="http://www.w3.org/2000/svg">
 
 <defs>
-    <!-- True cylindrical shading -->
-    <linearGradient id="tinCyl" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#6f6f6f"/>
-        <stop offset="20%" stop-color="#bcbcbc"/>
-        <stop offset="50%" stop-color="#f0f0f0"/>
-        <stop offset="80%" stop-color="#b0b0b0"/>
-        <stop offset="100%" stop-color="#5f5f5f"/>
+    <!-- Old tin body -->
+    <linearGradient id="oldTin" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#7b7f83"/>
+        <stop offset="25%" stop-color="#a6abb0"/>
+        <stop offset="50%" stop-color="#c6ccd1"/>
+        <stop offset="75%" stop-color="#9ea3a8"/>
+        <stop offset="100%" stop-color="#6d7175"/>
     </linearGradient>
 
-    <!-- Deep engraving -->
-    <filter id="engraveDeep">
-        <feOffset dx="0" dy="2"/>
-        <feGaussianBlur stdDeviation="1.6"/>
-        <feComposite in2="SourceAlpha" operator="out"/>
-    </filter>
+    <!-- Interior shadow -->
+    <radialGradient id="insideCup" cx="50%" cy="40%" r="60%">
+        <stop offset="0%" stop-color="#9da2a6"/>
+        <stop offset="100%" stop-color="#6b6f73"/>
+    </radialGradient>
 
     <!-- Warm candlelight -->
     <linearGradient id="candleShine" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="rgba(255,190,120,0)"/>
-        <stop offset="50%" stop-color="rgba(255,190,120,0.35)"/>
-        <stop offset="100%" stop-color="rgba(255,190,120,0)"/>
+        <stop offset="0%" stop-color="rgba(255,180,110,0)"/>
+        <stop offset="50%" stop-color="rgba(255,180,110,0.35)"/>
+        <stop offset="100%" stop-color="rgba(255,180,110,0)"/>
     </linearGradient>
+
+    <!-- Text paths -->
+    <path id="curve1" d="M140 195 Q210 185 280 195"/>
+    <path id="curve2" d="M130 220 Q210 210 290 220"/>
+    <path id="curve3" d="M150 245 Q210 235 270 245"/>
 </defs>
 
-<!-- Interior (cup tipped forward) -->
-<ellipse cx="230" cy="100" rx="115" ry="26"
-         fill="#9a9a9a"/>
-
-<!-- Inner wall -->
-<ellipse cx="230" cy="108" rx="110" ry="24"
-         fill="#7f7f7f" opacity="0.6"/>
+<!-- Interior (tilted forward) -->
+<ellipse cx="210" cy="95" rx="110" ry="26"
+         fill="url(#insideCup)"/>
 
 <!-- Rim -->
-<ellipse cx="230" cy="112" rx="118" ry="28"
+<ellipse cx="210" cy="100" rx="112" ry="28"
          fill="none"
-         stroke="#5f5f5f"
-         stroke-width="5"/>
+         stroke="#5e6266"
+         stroke-width="4"/>
 
-<!-- Cup body (slight taper) -->
-<path d="
-    M112 112
-    Q230 92 348 112
-    L332 290
-    Q230 310 128 290
-    Z"
-    fill="url(#tinCyl)"
-    stroke="#4f4f4f"
-    stroke-width="4"/>
+<!-- Cup body -->
+<rect x="98" y="100" width="224" height="170" rx="12"
+      fill="url(#oldTin)"
+      stroke="#5e6266"
+      stroke-width="4"/>
 
 <!-- Handle outer -->
 <path d="
-    M348 150
-    C420 155, 420 255, 348 260
-    C375 235, 375 180, 348 150 Z"
-    fill="#b8b8b8"
-    stroke="#4f4f4f"
+    M322 135
+    C390 145, 390 225, 322 235
+    C345 210, 345 160, 322 135 Z"
+    fill="#8c9196"
+    stroke="#5e6266"
     stroke-width="4"/>
 
-<!-- Handle inner cutout -->
+<!-- Handle inner -->
 <path d="
-    M362 170
-    C395 180, 395 230, 362 240
-    C380 220, 380 190, 362 170 Z"
+    M338 155
+    C370 165, 370 215, 338 225
+    C355 205, 355 175, 338 155 Z"
     fill="#f5f5dc"/>
 
-<!-- Engraving (wrapped illusion) -->
-<g class="engraved" font-family="Times New Roman, serif"
-   font-size="24" letter-spacing="1.2" filter="url(#engraveDeep)">
+<!-- Painted curved text -->
+<g font-family="Times New Roman, serif"
+   font-size="22"
+   fill="#f1efe8"
+   opacity="0.9"
+   letter-spacing="1.2">
 
-    <text x="230" y="175" text-anchor="middle" fill="#6a6a6a">Tenth</text>
-    <text x="226" y="205" text-anchor="middle" fill="#656565" opacity="0.9">Anniversary</text>
-    <text x="234" y="235" text-anchor="middle" fill="#707070" opacity="0.85">Gift</text>
+    <text>
+        <textPath href="#curve1" startOffset="50%" text-anchor="middle">
+            Tenth
+        </textPath>
+    </text>
+
+    <text>
+        <textPath href="#curve2" startOffset="50%" text-anchor="middle">
+            Anniversary
+        </textPath>
+    </text>
+
+    <text>
+        <textPath href="#curve3" startOffset="50%" text-anchor="middle">
+            Gift
+        </textPath>
+    </text>
 </g>
 
-<!-- Candlelight sweep -->
+<!-- Warm candlelight sweep -->
 <rect class="shine"
-      x="-200" y="120" width="200" height="190"
+      x="-220" y="100" width="220" height="170"
       fill="url(#candleShine)" opacity="0.45">
     <animate attributeName="x"
-             from="-200"
-             to="520"
-             dur="22s"
+             from="-220"
+             to="480"
+             dur="24s"
              repeatCount="indefinite"/>
 </rect>
 
