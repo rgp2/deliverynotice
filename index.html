@@ -45,7 +45,7 @@ body, html {
 }
 
 .frame:hover .engraved {
-    fill: #4a4a4a;
+    fill: #3f3f3f;
     filter: url(#engraveDeep);
 }
 .frame:hover .shine {
@@ -107,84 +107,93 @@ progress::-moz-progress-bar {
 <p class="tracking-label">Tracking</p>
 
 <div class="frame">
-<svg viewBox="0 0 420 340" width="100%" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 460 360" width="100%" xmlns="http://www.w3.org/2000/svg">
 
 <defs>
-    <!-- 3D cylindrical tin -->
+    <!-- True cylindrical shading -->
     <linearGradient id="tinCyl" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#7f7f7f"/>
-        <stop offset="18%" stop-color="#bcbcbc"/>
-        <stop offset="50%" stop-color="#eeeeee"/>
-        <stop offset="82%" stop-color="#b0b0b0"/>
-        <stop offset="100%" stop-color="#6f6f6f"/>
+        <stop offset="0%" stop-color="#6f6f6f"/>
+        <stop offset="20%" stop-color="#bcbcbc"/>
+        <stop offset="50%" stop-color="#f0f0f0"/>
+        <stop offset="80%" stop-color="#b0b0b0"/>
+        <stop offset="100%" stop-color="#5f5f5f"/>
     </linearGradient>
 
     <!-- Deep engraving -->
     <filter id="engraveDeep">
         <feOffset dx="0" dy="2"/>
-        <feGaussianBlur stdDeviation="1.4"/>
+        <feGaussianBlur stdDeviation="1.6"/>
         <feComposite in2="SourceAlpha" operator="out"/>
     </filter>
 
-    <!-- Warm candlelight shine -->
-    <linearGradient id="candleShine" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="rgba(255,200,120,0)"/>
-        <stop offset="50%" stop-color="rgba(255,200,120,0.35)"/>
-        <stop offset="100%" stop-color="rgba(255,200,120,0)"/>
+    <!-- Warm candlelight -->
+    <linearGradient id="candleShine" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="rgba(255,190,120,0)"/>
+        <stop offset="50%" stop-color="rgba(255,190,120,0.35)"/>
+        <stop offset="100%" stop-color="rgba(255,190,120,0)"/>
     </linearGradient>
 </defs>
 
-<!-- Inside of cup (visible due to tilt) -->
-<ellipse cx="210" cy="95" rx="100" ry="18"
-         fill="#9f9f9f"
-         opacity="0.9"/>
+<!-- Interior (cup tipped forward) -->
+<ellipse cx="230" cy="100" rx="115" ry="26"
+         fill="#9a9a9a"/>
 
-<!-- Cup rim -->
-<ellipse cx="210" cy="100" rx="102" ry="20"
+<!-- Inner wall -->
+<ellipse cx="230" cy="108" rx="110" ry="24"
+         fill="#7f7f7f" opacity="0.6"/>
+
+<!-- Rim -->
+<ellipse cx="230" cy="112" rx="118" ry="28"
          fill="none"
-         stroke="#6f6f6f"
-         stroke-width="4"/>
+         stroke="#5f5f5f"
+         stroke-width="5"/>
 
-<!-- Cup body -->
-<rect x="108" y="100" width="204" height="170" rx="28"
-      fill="url(#tinCyl)"
-      stroke="#5f5f5f"
-      stroke-width="4"/>
-
-<!-- Handle (larger opening) -->
+<!-- Cup body (slight taper) -->
 <path d="
-    M312 135
-    C365 145, 365 225, 312 235
-    C330 205, 330 165, 312 135 Z"
-    fill="#b8b8b8"
-    stroke="#5f5f5f"
+    M112 112
+    Q230 92 348 112
+    L332 290
+    Q230 310 128 290
+    Z"
+    fill="url(#tinCyl)"
+    stroke="#4f4f4f"
     stroke-width="4"/>
 
-<!-- Engraved text, wrapped -->
-<text x="210" y="165"
-      text-anchor="middle"
-      font-family="Times New Roman, serif"
-      font-size="23"
-      letter-spacing="1.2"
-      class="engraved"
-      fill="#6d6d6d"
-      filter="url(#engraveDeep)">
-    <tspan x="210" dx="-6" dy="0">Tenth</tspan>
-    <tspan x="210" dx="0" dy="28">Anniversary</tspan>
-    <tspan x="210" dx="6" dy="28">Gift</tspan>
-</text>
+<!-- Handle outer -->
+<path d="
+    M348 150
+    C420 155, 420 255, 348 260
+    C375 235, 375 180, 348 150 Z"
+    fill="#b8b8b8"
+    stroke="#4f4f4f"
+    stroke-width="4"/>
 
-<!-- Warm shine -->
+<!-- Handle inner cutout -->
+<path d="
+    M362 170
+    C395 180, 395 230, 362 240
+    C380 220, 380 190, 362 170 Z"
+    fill="#f5f5dc"/>
+
+<!-- Engraving (wrapped illusion) -->
+<g class="engraved" font-family="Times New Roman, serif"
+   font-size="24" letter-spacing="1.2" filter="url(#engraveDeep)">
+
+    <text x="230" y="175" text-anchor="middle" fill="#6a6a6a">Tenth</text>
+    <text x="226" y="205" text-anchor="middle" fill="#656565" opacity="0.9">Anniversary</text>
+    <text x="234" y="235" text-anchor="middle" fill="#707070" opacity="0.85">Gift</text>
+</g>
+
+<!-- Candlelight sweep -->
 <rect class="shine"
-      x="-160" y="100" width="160" height="170"
-      fill="url(#candleShine)" opacity="0.4">
+      x="-200" y="120" width="200" height="190"
+      fill="url(#candleShine)" opacity="0.45">
     <animate attributeName="x"
-             from="-160"
-             to="460"
-             dur="18s"
+             from="-200"
+             to="520"
+             dur="22s"
              repeatCount="indefinite"/>
 </rect>
-    
 
 </svg>
 </div>
@@ -196,32 +205,17 @@ progress::-moz-progress-bar {
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>Recipient</td>
-<td>June Hung</td>
-</tr>
-<tr>
-<td>Destination</td>
-<td>Brea, CA</td>
-</tr>
-<tr>
-<td>Delivery Status</td>
-<td>Delayed in Customs</td>
-</tr>
-<tr>
-<td>Current Location</td>
-<td>中國廈門</td>
-</tr>
-<tr>
-<td>Approximate Delivery Date</td>
-<td>January 9, 2026</td>
-</tr>
+<tr><td>Recipient</td><td>June Hung</td></tr>
+<tr><td>Destination</td><td>Brea, CA</td></tr>
+<tr><td>Delivery Status</td><td>Delayed in Customs</td></tr>
+<tr><td>Current Location</td><td>中國廈門</td></tr>
+<tr><td>Approximate Delivery Date</td><td>January 9, 2026</td></tr>
 </tbody>
 </table>
 
 <div class="progress-section">
-<label for="progress">Shipment Progress:</label>
-<progress id="progress" value="20" max="100"></progress>
+<label>Shipment Progress:</label>
+<progress value="20" max="100"></progress>
 <span>20% (In Transit from China)</span>
 </div>
 
