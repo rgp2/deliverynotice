@@ -117,12 +117,13 @@ progress {
             alt="Old Tin Cup">
 
         <svg class="cup-overlay" viewBox="0 0 420 420" preserveAspectRatio="none">
-            <defs>
-                <!-- Shifted right (+18) and up (-10) -->
-                <path id="line1" d="M 113 155 Q 228 190 343 155" />
-                <path id="line2" d="M 118 185 Q 228 225 338 185" />
-                <path id="line3" d="M 138 215 Q 228 250 318 215" />
-            </defs>
+ <defs>
+    <!-- Stronger outward cylindrical curvature (about 2x) -->
+    <path id="line1" d="M 113 155 Q 228 215 343 155" />
+    <path id="line2" d="M 118 185 Q 228 255 338 185" />
+    <path id="line3" d="M 138 215 Q 228 290 318 215" />
+</defs>
+
 
             <text class="cup-text">
                 <textPath href="#line1" startOffset="50%" text-anchor="middle">
