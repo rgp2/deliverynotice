@@ -52,7 +52,7 @@ body, html {
     pointer-events: none;
 }
 
-/* White painted lettering */
+/* Main painted text */
 .cup-text {
     fill: #ffffff;
     font-family: "Times New Roman", serif;
@@ -60,11 +60,14 @@ body, html {
     letter-spacing: 1px;
 }
 
+/* Est. text override */
 .est-text {
     font-size: 14px;
     letter-spacing: 2px;
+    fill: #000000;
 }
 
+/* Table styling */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -98,11 +101,25 @@ progress {
     height: 18px;
 }
 
+progress::-webkit-progress-value {
+    background-color: #b8860b;
+}
+progress::-moz-progress-bar {
+    background-color: #b8860b;
+}
+
 .update-note {
     margin-top: 16px;
     font-style: italic;
     color: #666;
     font-size: 14px;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .tracking-label {
+        font-size: 20px;
+    }
 }
 </style>
 </head>
@@ -117,13 +134,12 @@ progress {
             alt="Old Tin Cup">
 
         <svg class="cup-overlay" viewBox="0 0 420 420" preserveAspectRatio="none">
- <defs>
-    <!-- Stronger outward cylindrical curvature (about 2x) -->
-    <path id="line1" d="M 113 155 Q 228 215 343 155" />
-    <path id="line2" d="M 118 185 Q 228 255 338 185" />
-    <path id="line3" d="M 138 215 Q 228 290 318 215" />
-</defs>
-
+            <defs>
+                <!-- Raised slightly, shifted right, strong outward curvature -->
+                <path id="line1" d="M 113 147 Q 228 207 343 147" />
+                <path id="line2" d="M 118 177 Q 228 247 338 177" />
+                <path id="line3" d="M 138 207 Q 228 282 318 207" />
+            </defs>
 
             <text class="cup-text">
                 <textPath href="#line1" startOffset="50%" text-anchor="middle">
