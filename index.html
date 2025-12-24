@@ -29,28 +29,72 @@ body, html {
 
 .tracking-label {
     font-size: 24px;
-    margin-bottom: 10px;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .frame {
+    position: relative;
     border: 20px groove #654321;
     padding: 20px;
     background-color: #f5f5dc;
     box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
-    margin-bottom: 20px;
-    max-width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 20px auto;
+    width: 420px;
 }
 
-.frame:hover .shine {
-    animation-play-state: paused;
+.cup-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.cup-wrapper img {
+    width: 100%;
+    display: block;
+}
+
+/* SVG overlay */
+.cup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Painted text look */
+.cup-text {
+    fill: rgba(60, 60, 60, 0.55);
+    font-family: "Times New Roman", serif;
+    font-size: 28px;
+    letter-spacing: 1px;
+    transition: fill 0.6s ease;
+}
+
+/* Hover reveal */
+.cup-wrapper:hover .cup-text {
+    fill: rgba(40, 40, 40, 0.85);
+}
+
+/* Candlelight shine */
+.shine {
+    fill: url(#shineGradient);
+    mix-blend-mode: overlay;
+    animation: candleShine 12s ease-in-out infinite;
+}
+
+@keyframes candleShine {
+    0% { transform: translateX(-60%); opacity: 0; }
+    40% { opacity: 0.25; }
+    60% { opacity: 0.25; }
+    100% { transform: translateX(60%); opacity: 0; }
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 10px;
 }
 
 th, td {
@@ -60,7 +104,6 @@ th, td {
 
 th {
     background-color: #f5f5dc;
-    text-align: center;
 }
 
 tbody tr:nth-child(odd) td {
@@ -84,7 +127,6 @@ progress {
 progress::-webkit-progress-value {
     background-color: #b8860b;
 }
-
 progress::-moz-progress-bar {
     background-color: #b8860b;
 }
@@ -92,7 +134,6 @@ progress::-moz-progress-bar {
 .update-note {
     margin-top: 20px;
     font-style: italic;
-    font-size: 14px;
     color: #666;
 }
 </style>
@@ -100,134 +141,87 @@ progress::-moz-progress-bar {
 
 <body>
 <div class="notice-container">
-<p class="tracking-label">Tracking</p>
+    <p class="tracking-label">Tracking</p>
 
-<div class="frame">
-<svg viewBox="0 0 420 340" width="100%" xmlns="http://www.w3.org/2000/svg">
+    <div class="frame">
+        <div class="cup-wrapper">
+            <img src="https://cdn.create.vista.com/api/media/small/464667384/stock-photo-old-tin-cup-white-background" alt="Old Tin Cup">
 
-<defs>
-    <!-- Old tin body -->
-    <linearGradient id="oldTin" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#7b7f83"/>
-        <stop offset="25%" stop-color="#a6abb0"/>
-        <stop offset="50%" stop-color="#c6ccd1"/>
-        <stop offset="75%" stop-color="#9ea3a8"/>
-        <stop offset="100%" stop-color="#6d7175"/>
-    </linearGradient>
+            <svg class="cup-overlay" viewBox="0 0 420 420" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="shineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="rgba(255,200,140,0)" />
+                        <stop offset="50%" stop-color="rgba(255,200,140,0.6)" />
+                        <stop offset="100%" stop-color="rgba(255,200,140,0)" />
+                    </linearGradient>
 
-    <!-- Interior shadow -->
-    <radialGradient id="insideCup" cx="50%" cy="40%" r="60%">
-        <stop offset="0%" stop-color="#9da2a6"/>
-        <stop offset="100%" stop-color="#6b6f73"/>
-    </radialGradient>
+                    <!-- Curved paths -->
+                    <path id="line1" d="M 90 160 Q 210 130 330 160" />
+                    <path id="line2" d="M 95 195 Q 210 170 325 195" />
+                    <path id="line3" d="M 100 230 Q 210 210 320 230" />
+                </defs>
 
-    <!-- Warm candlelight -->
-    <linearGradient id="candleShine" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="rgba(255,180,110,0)"/>
-        <stop offset="50%" stop-color="rgba(255,180,110,0.35)"/>
-        <stop offset="100%" stop-color="rgba(255,180,110,0)"/>
-    </linearGradient>
+                <text class="cup-text">
+                    <textPath href="#line1" startOffset="50%" text-anchor="middle">
+                        You’re
+                    </textPath>
+                </text>
 
-    <!-- Text paths -->
-    <path id="curve1" d="M140 195 Q210 185 280 195"/>
-    <path id="curve2" d="M130 220 Q210 210 290 220"/>
-    <path id="curve3" d="M150 245 Q210 235 270 245"/>
-</defs>
+                <text class="cup-text">
+                    <textPath href="#line2" startOffset="50%" text-anchor="middle">
+                        Still
+                    </textPath>
+                </text>
 
-<!-- Interior (tilted forward) -->
-<ellipse cx="210" cy="95" rx="110" ry="26"
-         fill="url(#insideCup)"/>
+                <text class="cup-text">
+                    <textPath href="#line3" startOffset="50%" text-anchor="middle">
+                        My Home
+                    </textPath>
+                </text>
 
-<!-- Rim -->
-<ellipse cx="210" cy="100" rx="112" ry="28"
-         fill="none"
-         stroke="#5e6266"
-         stroke-width="4"/>
+                <!-- Shine layer -->
+                <rect class="shine" x="-200" y="0" width="300" height="420"/>
+            </svg>
+        </div>
+    </div>
 
-<!-- Cup body -->
-<rect x="98" y="100" width="224" height="170" rx="12"
-      fill="url(#oldTin)"
-      stroke="#5e6266"
-      stroke-width="4"/>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">Your Tenth Anniversary Gift is on its way!</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Recipient</td>
+                <td>June Hung</td>
+            </tr>
+            <tr>
+                <td>Destination</td>
+                <td>Brea, CA</td>
+            </tr>
+            <tr>
+                <td>Delivery Status</td>
+                <td>Delayed in Customs</td>
+            </tr>
+            <tr>
+                <td>Current Location</td>
+                <td>中國廈門</td>
+            </tr>
+            <tr>
+                <td>Approximate Delivery Date</td>
+                <td>January 9, 2026</td>
+            </tr>
+        </tbody>
+    </table>
 
-<!-- Handle outer -->
-<path d="
-    M322 135
-    C390 145, 390 225, 322 235
-    C345 210, 345 160, 322 135 Z"
-    fill="#8c9196"
-    stroke="#5e6266"
-    stroke-width="4"/>
+    <div class="progress-section">
+        <label>Shipment Progress:</label>
+        <progress value="20" max="100"></progress>
+        <span>20% (In Transit from China)</span>
+    </div>
 
-<!-- Handle inner -->
-<path d="
-    M338 155
-    C370 165, 370 215, 338 225
-    C355 205, 355 175, 338 155 Z"
-    fill="#f5f5dc"/>
-
-<!-- Painted curved text -->
-<g font-family="Times New Roman, serif"
-   font-size="22"
-   fill="#f1efe8"
-   opacity="0.9"
-   letter-spacing="1.2">
-
-    <text>
-        <textPath href="#curve1" startOffset="50%" text-anchor="middle">
-            Tenth
-        </textPath>
-    </text>
-
-    <text>
-        <textPath href="#curve2" startOffset="50%" text-anchor="middle">
-            Anniversary
-        </textPath>
-    </text>
-
-    <text>
-        <textPath href="#curve3" startOffset="50%" text-anchor="middle">
-            Gift
-        </textPath>
-    </text>
-</g>
-
-<!-- Warm candlelight sweep -->
-<rect class="shine"
-      x="-220" y="100" width="220" height="170"
-      fill="url(#candleShine)" opacity="0.45">
-    <animate attributeName="x"
-             from="-220"
-             to="480"
-             dur="24s"
-             repeatCount="indefinite"/>
-</rect>
-
-</svg>
-</div>
-
-<table>
-<thead>
-<tr>
-<th colspan="2">Your Tenth Anniversary Gift is on its way!</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>Recipient</td><td>June Hung</td></tr>
-<tr><td>Destination</td><td>Brea, CA</td></tr>
-<tr><td>Delivery Status</td><td>Delayed in Customs</td></tr>
-<tr><td>Current Location</td><td>中國廈門</td></tr>
-<tr><td>Approximate Delivery Date</td><td>January 9, 2026</td></tr>
-</tbody>
-</table>
-
-<div class="progress-section">
-<label>Shipment Progress:</label>
-<progress value="20" max="100"></progress>
-<span>20% (In Transit from China)</span>
-</div>
-
-<p class="update-note">Check back here daily for updates</p>
+    <p class="update-note">Check back here daily for updates</p>
 </div>
 </body>
 </html>
