@@ -59,31 +59,19 @@
             border: 1px solid #ddd;
         }
         th {
-            background-color: #f2f2f2; /* Light gray for header */
+            background-color: #f5f5dc; /* Same as frame background */
             font-weight: bold;
             text-align: center; /* Center justification for the header cell */
         }
-        tr:nth-child(even) td {
-            background-color: #e6f7ff; /* Light blue for even rows */
+        tbody tr:nth-child(odd) td {
+            background-color: #fdf5e6; /* Cream color for odd rows */
         }
-        tr:nth-child(odd) td {
-            background-color: #fff3e6; /* Light orange for odd rows */
+        tbody tr:nth-child(even) td {
+            background-color: #d2b48c; /* Light brown for even rows */
         }
-        /* Different colors for specific cells if needed */
-        td.recipient {
-            background-color: #ffffe6; /* Light yellow for recipient */
-        }
-        td.destination {
-            background-color: #e6e6ff; /* Light purple for destination */
-        }
-        td.status {
-            background-color: #ffe6e6; /* Light red for status */
-        }
-        td.location {
-            background-color: #e6f7ff; /* Light blue for current location */
-        }
-        td.date {
-            background-color: #e6ffe6; /* Light green for date */
+        /* Remove specific cell backgrounds to follow alternating pattern */
+        td.recipient, td.destination, td.status, td.location, td.date {
+            background-color: inherit;
         }
         .update-note {
             margin-top: 20px;
