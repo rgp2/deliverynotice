@@ -46,22 +46,24 @@ body, html {
     display: block;
 }
 
-/* SVG overlay */
 .cup-overlay {
     position: absolute;
     inset: 0;
     pointer-events: none;
 }
 
-/* Painted lettering */
 .cup-text {
     fill: #000;
     font-family: "Times New Roman", serif;
-    font-size: 18px; /* ~2/3 size */
+    font-size: 18px;
     letter-spacing: 1px;
 }
 
-/* Table styling */
+.est-text {
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -95,25 +97,11 @@ progress {
     height: 18px;
 }
 
-progress::-webkit-progress-value {
-    background-color: #b8860b;
-}
-progress::-moz-progress-bar {
-    background-color: #b8860b;
-}
-
 .update-note {
     margin-top: 16px;
     font-style: italic;
     color: #666;
     font-size: 14px;
-}
-
-/* Mobile tweaks */
-@media (max-width: 480px) {
-    .tracking-label {
-        font-size: 20px;
-    }
 }
 </style>
 </head>
@@ -129,9 +117,10 @@ progress::-moz-progress-bar {
 
         <svg class="cup-overlay" viewBox="0 0 420 420" preserveAspectRatio="none">
             <defs>
-                <!-- Correct outward curve for cylindrical perspective -->
-                <path id="line1" d="M 110 235 Q 210 255 310 235" />
-                <path id="line2" d="M 120 265 Q 210 285 300 265" />
+                <!-- Raised, stronger cylindrical curves -->
+                <path id="line1" d="M 95 165 Q 210 200 325 165" />
+                <path id="line2" d="M 100 195 Q 210 235 320 195" />
+                <path id="line3" d="M 120 225 Q 210 260 300 225" />
             </defs>
 
             <text class="cup-text">
@@ -143,6 +132,12 @@ progress::-moz-progress-bar {
             <text class="cup-text">
                 <textPath href="#line2" startOffset="50%" text-anchor="middle">
                     My Home
+                </textPath>
+            </text>
+
+            <text class="cup-text est-text">
+                <textPath href="#line3" startOffset="50%" text-anchor="middle">
+                    Est. 2016
                 </textPath>
             </text>
         </svg>
