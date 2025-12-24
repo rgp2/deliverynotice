@@ -85,77 +85,107 @@
     <p class="tracking-label">Tracking</p>
 
     <div class="frame">
-        <!-- Tin Anniversary Gift Illustration -->
-        <svg width="100%" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+        <!-- Old-fashioned tin cup with engraved text and subtle shine -->
+        <svg viewBox="0 0 400 300" width="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
-                <linearGradient id="tinGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#eeeeee"/>
-                    <stop offset="50%" stop-color="#cccccc"/>
-                    <stop offset="100%" stop-color="#aaaaaa"/>
+                <!-- Aged tin gradient -->
+                <linearGradient id="tinBody" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#e0e0e0"/>
+                    <stop offset="40%" stop-color="#bfbfbf"/>
+                    <stop offset="70%" stop-color="#a9a9a9"/>
+                    <stop offset="100%" stop-color="#cfcfcf"/>
                 </linearGradient>
-                <linearGradient id="engrave" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#888"/>
-                    <stop offset="100%" stop-color="#555"/>
+
+                <!-- Engraving shadow -->
+                <filter id="engrave">
+                    <feOffset dx="0" dy="1"/>
+                    <feGaussianBlur stdDeviation="1"/>
+                    <feComposite in2="SourceAlpha" operator="out"/>
+                    <feColorMatrix type="matrix"
+                        values="0 0 0 0 0.25
+                                0 0 0 0 0.25
+                                0 0 0 0 0.25
+                                0 0 0 1 0"/>
+                </filter>
+
+                <!-- Subtle shine -->
+                <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+                    <stop offset="50%" stop-color="rgba(255,255,255,0.35)"/>
+                    <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
                 </linearGradient>
             </defs>
 
-            <!-- Handle -->
-            <path d="M120 60 Q200 20 280 60"
-                  fill="none"
+            <!-- Cup body -->
+            <rect x="110" y="80" width="180" height="150" rx="18"
+                  fill="url(#tinBody)"
                   stroke="#777"
-                  stroke-width="10"/>
+                  stroke-width="4"/>
 
-            <!-- Tin body -->
-            <rect x="80" y="70" width="240" height="160" rx="15"
-                  fill="url(#tinGradient)"
+            <!-- Cup lip -->
+            <ellipse cx="200" cy="80" rx="90" ry="12"
+                     fill="#d9d9d9"
+                     stroke="#777"
+                     stroke-width="3"/>
+
+            <!-- Handle -->
+            <path d="M290 115
+                     C335 120, 335 190, 290 195
+                     C300 175, 300 135, 290 115 Z"
+                  fill="#c0c0c0"
                   stroke="#777"
                   stroke-width="4"/>
 
             <!-- Engraved text -->
-            <text x="200" y="155"
+            <text x="200" y="160"
                   text-anchor="middle"
                   font-family="Times New Roman, serif"
-                  font-size="24"
-                  fill="url(#engrave)"
-                  style="letter-spacing:1px">
+                  font-size="22"
+                  letter-spacing="1"
+                  fill="#6b6b6b"
+                  filter="url(#engrave)">
                 Tenth Anniversary Gift
             </text>
 
-            <!-- Subtle engraving inset -->
-            <rect x="105" y="115" width="190" height="60" rx="8"
-                  fill="none"
-                  stroke="#999"
-                  stroke-width="1"/>
+            <!-- Shine animation -->
+            <rect x="-120" y="80" width="120" height="150"
+                  fill="url(#shine)" opacity="0.4">
+                <animate attributeName="x"
+                         from="-120"
+                         to="400"
+                         dur="8s"
+                         repeatCount="indefinite"/>
+            </rect>
         </svg>
     </div>
 
     <table>
         <thead>
-            <tr>
-                <th colspan="2">Your Tenth Anniversary Gift is on its way!</th>
-            </tr>
+        <tr>
+            <th colspan="2">Your Tenth Anniversary Gift is on its way!</th>
+        </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Recipient</td>
-                <td>June Hung</td>
-            </tr>
-            <tr>
-                <td>Destination</td>
-                <td>Brea, CA</td>
-            </tr>
-            <tr>
-                <td>Delivery Status</td>
-                <td>Delayed in Customs</td>
-            </tr>
-            <tr>
-                <td>Current Location</td>
-                <td>中國廈門</td>
-            </tr>
-            <tr>
-                <td>Approximate Delivery Date</td>
-                <td>December 31, 2025</td>
-            </tr>
+        <tr>
+            <td>Recipient</td>
+            <td>June Hung</td>
+        </tr>
+        <tr>
+            <td>Destination</td>
+            <td>Brea, CA</td>
+        </tr>
+        <tr>
+            <td>Delivery Status</td>
+            <td>Delayed in Customs</td>
+        </tr>
+        <tr>
+            <td>Current Location</td>
+            <td>中國廈門</td>
+        </tr>
+        <tr>
+            <td>Approximate Delivery Date</td>
+            <td>December 31, 2025</td>
+        </tr>
         </tbody>
     </table>
 
