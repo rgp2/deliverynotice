@@ -26,12 +26,17 @@
             overflow-x: auto; /* Makes table scrollable on small screens */
             text-align: center; /* Centers content */
         }
+        .tracking-label {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333; /* Neutral color */
+            font-weight: bold;
+        }
         .frame {
-            border: 15px solid #c00; /* Festive red frame border */
-            padding: 15px;
-            background-color: #fff; /* White background inside frame */
+            border: 20px groove #654321; /* Dark brown ornate frame with groove style */
+            padding: 20px;
+            background-color: #f5f5dc; /* Beige background inside frame for elegance */
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Shadow for 3D picture frame effect */
-            border-image: linear-gradient(to bottom, #c00, #0c0) 1; /* Gradient for red-to-green */
             margin-bottom: 20px;
             max-width: 80%;
             margin-left: auto;
@@ -40,9 +45,9 @@
         h1 {
             font-size: 32px;
             margin: 0;
-            color: #c00; /* Festive red */
-            text-shadow: 1px 1px 2px #0c0; /* Green shadow for vibe */
-            font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun, festive font (fallback to sans-serif) */
+            color: #b8860b; /* Dark goldenrod for anniversary theme */
+            text-shadow: 1px 1px 2px #a9a9a9; /* Gray shadow for elegant vibe */
+            font-family: 'Times New Roman', serif; /* Elegant font */
         }
         table {
             width: 100%;
@@ -100,22 +105,23 @@
             background-color: #f3f3f3;
         }
         progress::-webkit-progress-value {
-            background-color: #0c0; /* Green for progress */
+            background-color: #b8860b; /* Gold for progress, anniversary theme */
         }
         progress::-moz-progress-bar {
-            background-color: #0c0; /* Green for progress */
+            background-color: #b8860b; /* Gold for progress */
         }
     </style>
 </head>
 <body>
     <div class="notice-container">
+        <p class="tracking-label">Tracking</p>
         <div class="frame">
-            <h1>🎉 Tenth Anniversary Gift Tracker 💍</h1>
+            <h1>🎉 Tenth Anniversary Gift 💍</h1>
         </div>
         <table>
             <thead>
                 <tr>
-                    <th colspan="2">We're Sorry!<br>Your Tenth Anniversary Gift has been delayed 😞</th>
+                    <th colspan="2">Your Tenth Anniversary Gift is on its way!</th>
                 </tr>
             </thead>
             <tbody>
