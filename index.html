@@ -41,15 +41,49 @@
             max-width: 80%;
             margin-left: auto;
             margin-right: auto;
+            position: relative; /* For overlay positioning */
         }
-        h1 {
-            font-size: 32px;
-            margin: 0;
-            color: #b8860b; /* Dark goldenrod for anniversary theme */
-            text-shadow: 1px 1px 2px #a9a9a9; /* Gray shadow for elegant vibe */
-            font-family: 'Times New Roman', serif; /* Elegant font */
-            line-height: 1.2; /* Adjust line height for better spacing */
-            text-align: center;
+        .cup-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+        .cup-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        /* Overlay SVG */
+        .cup-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+        /* Main engraved text */
+        .cup-text {
+            fill: #f2f0e8; /* warm off-white */
+            font-family: "Times New Roman", serif;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            text-shadow: inset 0 0 1px rgba(0,0,0,0.25);
+        }
+        /* Top line slightly tighter */
+        .cup-text.top {
+            letter-spacing: 0.2px;
+        }
+        /* Small caps look for Est. */
+        .est-text {
+            font-size: 14px;
+            letter-spacing: 2px;
+            fill: #000000;
+            font-variant: small-caps;
+        }
+        /* Hidden interior engraving */
+        .inner-text {
+            font-size: 14px;
+            fill: rgba(0,0,0,0.35);
+            letter-spacing: 1px;
         }
         table {
             width: 100%;
@@ -111,7 +145,39 @@
     <div class="notice-container">
         <p class="tracking-label">Tracking</p>
         <div class="frame">
-            <h1>🎉<br>Tenth<br>Anniversary<br>Gift<br>💍</h1>
+            <div class="cup-wrapper">
+                <img src="https://cdn.create.vista.com/api/media/small/464667384/stock-photo-old-tin-cup-white-background" alt="Old Tin Cup">
+                <svg class="cup-overlay" viewBox="0 0 420 420" preserveAspectRatio="none">
+                    <!-- Main engraving -->
+                    <defs>
+                        <path id="line1" d="M 120 135 Q 210 195 300 135" />
+                        <path id="line2" d="M 125 170 Q 210 235 295 170" />
+                        <path id="line3" d="M 140 205 Q 210 270 280 205" />
+                        <path id="inner" d="M 155 245 Q 210 285 265 245" />
+                    </defs>
+                    <text class="cup-text top">
+                        <textPath href="#line1" startOffset="50%" text-anchor="middle">
+                            You’re Always
+                        </textPath>
+                    </text>
+                    <text class="cup-text">
+                        <textPath href="#line2" startOffset="50%" text-anchor="middle">
+                            My Home
+                        </textPath>
+                    </text>
+                    <text class="cup-text est-text">
+                        <textPath href="#line3" startOffset="50%" text-anchor="middle">
+                            Est. 2016
+                        </textPath>
+                    </text>
+                    <!-- Hidden interior engraving -->
+                    <text class="inner-text">
+                        <textPath href="#inner" startOffset="50%" text-anchor="middle">
+                           
+                        </textPath>
+                    </text>
+                </svg>
+            </div>
         </div>
         <table>
             <thead>
@@ -130,7 +196,7 @@
                 </tr>
                 <tr>
                     <td>Delivery Status</td>
-                    <td class="status">Cleared Customs</td>
+                    <td class="status">Delayed in Customs</td>
                 </tr>
                 <tr>
                     <td>Current Location</td>
@@ -138,7 +204,7 @@
                 </tr>
                 <tr>
                     <td>Approximate Delivery Date</td>
-                    <td class="date">January 14, 2026</td>
+                    <td class="date">December 31, 2025</td>
                 </tr>
                 <tr>
                     <td>Traditional Material</td>
@@ -146,7 +212,7 @@
                 </tr>
             </tbody>
         </table>
-        <img src="https://cdn.create.vista.com/api/media/small/464667384/stock-photo-old-tin-cup-white-background" alt="Old Tin Cup" class="tin-image">
+        <img src="https://i.etsystatic.com/5676789/r/il/ac1b7b/1527261107/il_570xN.1527261107_cm3y.jpg" alt="Tin anniversary gift example" class="tin-image">
         <div class="progress-section">
             <label for="progress">Shipment Progress:</label>
             <progress id="progress" value="60" max="100"></progress>
