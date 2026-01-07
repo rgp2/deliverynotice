@@ -1,228 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>10th Anniversary Gift Tracking</title>
-
-<style>
-body, html {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #808080;
-    font-family: Arial, sans-serif;
-}
-
-.notice-container {
-    width: 100%;
-    max-width: 620px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    text-align: center;
-}
-
-.tracking-label {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 16px;
-}
-
-.cup-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 420px;
-    margin: 0 auto 20px;
-}
-
-.cup-wrapper img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Overlay SVG */
-.cup-overlay {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-}
-
-/* Main engraved text */
-.cup-text {
-    fill: #f2f0e8; /* warm off-white */
-    font-family: "Times New Roman", serif;
-    font-size: 18px;
-    letter-spacing: 0.5px;
-    text-shadow: inset 0 0 1px rgba(0,0,0,0.25);
-}
-
-/* Top line slightly tighter */
-.cup-text.top {
-    letter-spacing: 0.2px;
-}
-
-/* Small caps look for Est. */
-.est-text {
-    font-size: 14px;
-    letter-spacing: 2px;
-    fill: #000000;
-    font-variant: small-caps;
-}
-
-/* Hidden interior engraving */
-.inner-text {
-    font-size: 14px;
-    fill: rgba(0,0,0,0.35);
-    letter-spacing: 1px;
-}
-
-/* Table styling */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
-}
-
-th {
-    background-color: #f5f5dc;
-}
-
-tbody tr:nth-child(odd) td {
-    background-color: #fdf5e6;
-}
-
-tbody tr:nth-child(even) td {
-    background-color: #d2b48c;
-}
-
-.progress-section {
-    margin-top: 20px;
-    text-align: left;
-}
-
-progress {
-    width: 100%;
-    height: 18px;
-}
-
-progress::-webkit-progress-value {
-    background-color: #b8860b;
-}
-
-progress::-moz-progress-bar {
-    background-color: #b8860b;
-}
-
-.update-note {
-    margin-top: 16px;
-    font-style: italic;
-    color: #666;
-    font-size: 14px;
-}
-
-@media (max-width: 480px) {
-    .tracking-label {
-        font-size: 20px;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Notice</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #808080; /* Neutral gray background */
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        .notice-container {
+            max-width: 80%;
+            padding: 20px;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow-x: auto; /* Makes table scrollable on small screens */
+            text-align: center; /* Centers content */
+        }
+        .tracking-label {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333; /* Neutral color */
+            font-weight: bold;
+        }
+        .frame {
+            border: 20px groove #A9A9A9; /* Silver-gray for tin theme */
+            padding: 20px;
+            background-color: #E5E4E2; /* Light metallic gray for tin elegance */
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Shadow for 3D picture frame effect */
+            margin-bottom: 20px;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1 {
+            font-size: 32px;
+            margin: 0;
+            color: #b8860b; /* Dark goldenrod for anniversary theme */
+            text-shadow: 1px 1px 2px #a9a9a9; /* Gray shadow for elegant vibe */
+            font-family: 'Times New Roman', serif; /* Elegant font */
+            line-height: 1.2; /* Adjust line height for better spacing */
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #E5E4E2; /* Match frame for tin theme */
+            font-weight: bold;
+            text-align: center; /* Center justification for the header cell */
+        }
+        tbody tr:nth-child(odd) td {
+            background-color: #fdf5e6; /* Cream color for odd rows */
+        }
+        tbody tr:nth-child(even) td {
+            background-color: #d2b48c; /* Light brown for even rows */
+        }
+        /* Remove specific cell backgrounds to follow alternating pattern */
+        td.recipient, td.destination, td.status, td.location, td.date, td.material {
+            background-color: inherit;
+        }
+        .update-note {
+            margin-top: 20px;
+            font-style: italic;
+            font-size: 14px;
+            color: #666;
+        }
+        .progress-section {
+            margin-top: 20px;
+            text-align: left;
+        }
+        progress {
+            width: 100%;
+            height: 20px;
+            background-color: #f3f3f3;
+            border: 1px solid #ccc;
+        }
+        progress::-webkit-progress-bar {
+            background-color: #f3f3f3;
+        }
+        progress::-webkit-progress-value {
+            background-color: #b8860b; /* Gold for progress, anniversary theme */
+        }
+        progress::-moz-progress-bar {
+            background-color: #b8860b; /* Gold for progress */
+        }
+        .tin-image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
 </head>
-
 <body>
-<div class="notice-container">
-
-    <p class="tracking-label">10th Anniversary Gift Tracking</p>
-
-    <div class="cup-wrapper">
-        <img src="https://cdn.create.vista.com/api/media/small/464667384/stock-photo-old-tin-cup-white-background"
-             alt="Old Tin Cup">
-
-        <svg class="cup-overlay" viewBox="0 0 420 420" preserveAspectRatio="none">
-
-            <!-- Main engraving -->
-            <defs>
-                <path id="line1" d="M 120 135 Q 210 195 300 135" />
-                <path id="line2" d="M 125 170 Q 210 235 295 170" />
-                <path id="line3" d="M 140 205 Q 210 270 280 205" />
-                <path id="inner" d="M 155 245 Q 210 285 265 245" />
-            </defs>
-
-            <text class="cup-text top">
-                <textPath href="#line1" startOffset="50%" text-anchor="middle">
-                    You’re Always
-                </textPath>
-            </text>
-
-            <text class="cup-text">
-                <textPath href="#line2" startOffset="50%" text-anchor="middle">
-                    My Home
-                </textPath>
-            </text>
-
-            <text class="cup-text est-text">
-                <textPath href="#line3" startOffset="50%" text-anchor="middle">
-                    Est. 2016
-                </textPath>
-            </text>
-
-            <!-- Hidden interior engraving -->
-            <text class="inner-text">
-                <textPath href="#inner" startOffset="50%" text-anchor="middle">
-                    
-                </textPath>
-            </text>
-
-        </svg>
+    <div class="notice-container">
+        <p class="tracking-label">Tracking</p>
+        <div class="frame">
+            <h1>🎉<br>Tenth<br>Anniversary<br>Gift<br>💍</h1>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">Your Tenth Anniversary Gift is on its way!</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Recipient</td>
+                    <td class="recipient">June Hung</td>
+                </tr>
+                <tr>
+                    <td>Destination</td>
+                    <td class="destination">Brea, CA</td>
+                </tr>
+                <tr>
+                    <td>Delivery Status</td>
+                    <td class="status">Delayed in Customs</td>
+                </tr>
+                <tr>
+                    <td>Current Location</td>
+                    <td class="location">中國廈門</td>
+                </tr>
+                <tr>
+                    <td>Approximate Delivery Date</td>
+                    <td class="date">December 31, 2025</td>
+                </tr>
+                <tr>
+                    <td>Traditional Material</td>
+                    <td class="material">Tin (symbolizing durability and flexibility in marriage)</td>
+                </tr>
+            </tbody>
+        </table>
+        <img src="https://i.etsystatic.com/5676789/r/il/ac1b7b/1527261107/il_570xN.1527261107_cm3y.jpg" alt="Tin anniversary gift example" class="tin-image">
+        <div class="progress-section">
+            <label for="progress">Shipment Progress:</label>
+            <progress id="progress" value="60" max="100"></progress>
+            <span>60% (In Transit from China)</span>
+        </div>
+        <p class="update-note"><a href="https://www.fedex.com/fedextrack/?trknbr=887688161069&trkqual=2461048000~887688161069~FX" target="_blank">Track FedEx 887688161069</a></p>
     </div>
-
-    <table>
-        <thead>
-            <tr>
-                <th colspan="2">Your Tenth Anniversary Gift is on its way!</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Recipient</td>
-                <td>June Hung</td>
-            </tr>
-            <tr>
-                <td>Destination</td>
-                <td>Brea, CA</td>
-            </tr>
-            <tr>
-                <td>Delivery Status</td>
-                <td>Drying 中國廈門 </td>
-            </tr>
-            <tr>
-                <td>Current Location</td>
-                <td>中國廈門</td>
-            </tr>
-            <tr>
-                <td>Approximate Delivery Date</td>
-                <td>January 14, 2026</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="progress-section">
-        <label>Shipment Progress:</label>
-        <progress value="60" max="100"></progress>
-        <span>60% (Shipping from China)</span>
-    </div>
-
-    <p class="update-note">Check back here daily for updates</p>
-</div>
 </body>
 </html>
